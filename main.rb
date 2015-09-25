@@ -5,7 +5,7 @@
 require 'sinatra'
 require 'slim'
 require 'sass'
-require './customer' # contains class for getting customer data
+# require './customer'
 require './stats' # may replace "customer" but we'll see soon
 
 configure do
@@ -13,11 +13,13 @@ configure do
   set :session_secret, 'thisiswhywecanthavenicethings'
   set :username, "admin"
   set :password, "w0kkaw0kka"
+end
 
 helpers do
   def css(*stylesheets)
     stylesheets.map do |stylesheets|
       "<link href=\"/#{stylesheet}.css\" media=\"screen, projection\" rel=\"stylesheet\">"
+  end
 end
 
 get '/' do
@@ -41,4 +43,6 @@ post '/login' do
   else
     slim :login
   end
+end
+
 end
