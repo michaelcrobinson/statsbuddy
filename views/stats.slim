@@ -1,0 +1,13 @@
+h1 "All Customers"
+
+- if @stats.any?
+  table
+    thead
+      th Customer
+      th Size (MB)
+    @stats.each do |stat|
+      tbody
+        td = <a href="/stats/#{stat.id}">#{stat.customer}</a>
+        td = #{stat.size}
+- else
+  p There's nothing to display here! You might want to look into that...

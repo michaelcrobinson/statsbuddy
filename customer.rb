@@ -1,13 +1,15 @@
-require 'dm-core'
-require 'dm-migrations'
+require 'sequel'
 
-# May require explicit username/password, consider defining in a YAML file
-DataMapper.setup(:default, 'postgres://localhost/customer_stats')
+DB = customer_stats.postgresql
 
-class Customer
-  include DataMapper::Resource
+class Customer do
 
-  property :id, Serial
-  property :datestamp, Date
-  property :size, Integer
-  # Add more properties here
+
+end
+
+DB.create_table :customers do
+  primary_key: id
+  Date: date
+  Int: size
+
+end
